@@ -8,7 +8,9 @@ class DonasiModel {
   final String status;
   final int? poinDiperoleh;
   final String createdAt;
+  final String? verifiedAt;
   final LokasiModel? lokasi;
+  final String? verifikatorNama;
 
   DonasiModel({
     required this.id,
@@ -18,7 +20,9 @@ class DonasiModel {
     required this.status,
     this.poinDiperoleh,
     required this.createdAt,
+    this.verifiedAt,
     this.lokasi,
+    this.verifikatorNama,
   });
 
   factory DonasiModel.fromJson(Map<String, dynamic> json) {
@@ -32,7 +36,9 @@ class DonasiModel {
       status: json['status'],
       poinDiperoleh: json['poin_diperoleh'],
       createdAt: json['created_at'],
+      verifiedAt: json['verified_at'],
       lokasi: json['lokasi'] != null ? LokasiModel.fromJson(json['lokasi']) : null,
+      verifikatorNama: json['verifikator'] != null ? json['verifikator']['name'] : null,
     );
   }
 }

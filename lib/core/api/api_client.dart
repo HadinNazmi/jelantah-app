@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class ApiClient {
   // Base URL backend Laravel — masih localhost untuk development
-  static const String baseUrl = 'http://192.168.1.4:8000/api';
+  static const String baseUrl = 'http://192.168.1.6:8000/api';
 
   static Future<http.Response> post(
     String endpoint, {
@@ -50,4 +50,9 @@ class ApiClient {
 
     return http.put(url, headers: headers, body: jsonEncode(body));
   }
+
+  static String imageUrl(String path) {
+  final base = baseUrl.replaceAll('/api', '');
+  return '$base/storage/$path';
+}
 }

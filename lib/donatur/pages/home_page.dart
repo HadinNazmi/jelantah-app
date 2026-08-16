@@ -7,7 +7,7 @@ import 'package:jelantah_app/core/models/lokasi_model.dart';
 import 'package:jelantah_app/core/models/user_model.dart';
 import 'package:jelantah_app/core/services/auth_service.dart';
 import 'package:jelantah_app/core/theme/app_theme.dart';
-import 'package:jelantah_app/donatur/pages/donasi_form_page.dart';
+import 'package:jelantah_app/donatur/pages/lokasi_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -320,19 +320,14 @@ class _LokasiCard extends StatelessWidget {
       shadowColor: Colors.black.withValues(alpha: 0.04),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: lokasi.sedangBuka
-            ? () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => DonasiFormPage(
-                      lokasiId: lokasi.id,
-                      lokasiNama: lokasi.nama,
-                    ),
-                  ),
-                );
-              }
-            : null,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => LokasiDetailPage(lokasiId: lokasi.id),
+            ),
+          );
+        },
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(

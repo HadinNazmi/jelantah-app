@@ -13,4 +13,15 @@ class LokasiApi {
       return {'success': false, 'message': data['message']};
     }
   }
+
+  static Future<Map<String, dynamic>> getLokasiDetail(String token, int id) async {
+  final response = await ApiClient.get('lokasi/$id', token: token);
+  final data = jsonDecode(response.body);
+
+  if (response.statusCode == 200) {
+    return {'success': true, 'data': data};
+  } else {
+    return {'success': false, 'message': data['message']};
+  }
+}
 }
