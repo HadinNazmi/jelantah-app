@@ -45,4 +45,15 @@ class AuthApi {
       return {'success': false, 'errors': data['errors'] ?? data['message']};
     }
   }
+
+  static Future<Map<String, dynamic>> getMe(String token) async {
+  final response = await ApiClient.get('me', token: token);
+  final data = jsonDecode(response.body);
+
+  if (response.statusCode == 200) {
+    return {'success': true, 'data': data};
+  } else {
+    return {'success': false, 'message': data['message']};
+  }
+}
 }

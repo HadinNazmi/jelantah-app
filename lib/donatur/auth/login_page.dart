@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jelantah_app/core/api/auth_api.dart';
 import 'package:jelantah_app/core/services/auth_service.dart';
+import 'package:jelantah_app/donatur/pages/main_navigation.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -35,10 +36,8 @@ class _LoginPageState extends State<LoginPage> {
       await AuthService.saveRole(data['user']['role']);
 
       if (mounted) {
-        // Sementara: tampilkan pesan sukses.
-        // Nanti diarahkan ke halaman home donatur.
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Login berhasil!')),
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const MainNavigation()),
         );
       }
     } else {
@@ -83,10 +82,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 8),
               if (_errorMessage != null)
-                Text(
-                  _errorMessage!,
-                  style: const TextStyle(color: Colors.red),
-                ),
+                Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _isLoading ? null : _handleLogin,

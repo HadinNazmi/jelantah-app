@@ -1,0 +1,6 @@
+Pastikan Laravel server-nya juga masih jalan 
+(kalau sempat mati, jalankan ulang 
+php artisan serve --host=0.0.0.0 --port=8000 
+dari folder jelantah-backend)
+
+Coba login lagi dari app di HP kamu pakai budi@test.com / password123
