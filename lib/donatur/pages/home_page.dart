@@ -6,6 +6,7 @@ import 'package:jelantah_app/core/models/dompet_model.dart';
 import 'package:jelantah_app/core/models/lokasi_model.dart';
 import 'package:jelantah_app/core/models/user_model.dart';
 import 'package:jelantah_app/core/services/auth_service.dart';
+import 'package:jelantah_app/donatur/pages/donasi_form_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -143,6 +144,19 @@ class _LokasiCard extends StatelessWidget {
           label: Text(lokasi.sedangBuka ? 'Buka' : 'Tutup'),
           backgroundColor: lokasi.sedangBuka ? Colors.green.shade100 : Colors.red.shade100,
         ),
+        onTap: lokasi.sedangBuka
+            ? () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => DonasiFormPage(
+                      lokasiId: lokasi.id,
+                      lokasiNama: lokasi.nama,
+                    ),
+                  ),
+                );
+              }
+            : null,
       ),
     );
   }
