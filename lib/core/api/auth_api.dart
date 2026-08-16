@@ -47,13 +47,36 @@ class AuthApi {
   }
 
   static Future<Map<String, dynamic>> getMe(String token) async {
-  final response = await ApiClient.get('me', token: token);
-  final data = jsonDecode(response.body);
+    final response = await ApiClient.get('me', token: token);
+    final data = jsonDecode(response.body);
 
-  if (response.statusCode == 200) {
-    return {'success': true, 'data': data};
-  } else {
-    return {'success': false, 'message': data['message']};
+    if (response.statusCode == 200) {
+      return {'success': true, 'data': data};
+    } else {
+      return {'success': false, 'message': data['message']};
+    }
   }
-}
+
+  static Future<Map<String, dynamic>> updateProfile({
+    required String token,
+    required String name,
+    required String phone,
+    required String alamat,
+    required String nik,
+  }) async {
+    final response = await ApiClient.put('profile', token: token, body: {
+      'name': name,
+      'phone': phone,
+      'alamat': alamat,
+      'nomor_ktp': nik,
+    });
+
+    final data = jsonDecode(response.body);
+
+    if (response.statusCode == 200) {
+      return {'success': true, 'data': data};
+    } else {
+      return {'success': false, 'errors': data['errors'] ?? data['message']};
+    }
+  }
 }

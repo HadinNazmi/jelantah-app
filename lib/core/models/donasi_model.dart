@@ -1,3 +1,5 @@
+import 'package:jelantah_app/core/models/lokasi_model.dart';
+
 class DonasiModel {
   final int id;
   final double jumlahInput;
@@ -6,6 +8,7 @@ class DonasiModel {
   final String status;
   final int? poinDiperoleh;
   final String createdAt;
+  final LokasiModel? lokasi;
 
   DonasiModel({
     required this.id,
@@ -15,6 +18,7 @@ class DonasiModel {
     required this.status,
     this.poinDiperoleh,
     required this.createdAt,
+    this.lokasi,
   });
 
   factory DonasiModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +32,7 @@ class DonasiModel {
       status: json['status'],
       poinDiperoleh: json['poin_diperoleh'],
       createdAt: json['created_at'],
+      lokasi: json['lokasi'] != null ? LokasiModel.fromJson(json['lokasi']) : null,
     );
   }
 }
