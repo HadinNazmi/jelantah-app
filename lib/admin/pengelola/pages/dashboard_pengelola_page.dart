@@ -14,10 +14,15 @@ class DashboardPengelolaPage extends StatefulWidget {
 class _DashboardPengelolaPageState extends State<DashboardPengelolaPage> {
   int _selectedIndex = 0;
 
-final List<Widget> _pages = const [
-  DonasiMasukPage(),
-  LokasiListPage(),
-];
+  final List<Widget> _pages = const [
+    DonasiMasukPage(),
+    LokasiListPage(),
+  ];
+
+  final List<String> _titles = const [
+    'Donasi Masuk',
+    'Kelola Lokasi TPS',
+  ];
 
   Future<void> _logout() async {
     await AuthService.logout();
@@ -32,43 +37,250 @@ final List<Widget> _pages = const [
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF8FAFC),
       body: Row(
         children: [
-          NavigationRail(
-            selectedIndex: _selectedIndex,
-            onDestinationSelected: (index) => setState(() => _selectedIndex = index),
-            labelType: NavigationRailLabelType.all,
-            leading: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-              child: Icon(Icons.eco, size: 32, color: Colors.green),
+          // Sidebar Navigation (Dark Emerald Gradient)
+          Container(
+            width: 260,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF064E3B),
+                  Color(0xFF047857),
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 16,
+                  offset: Offset(4, 0),
+                ),
+              ],
             ),
-            trailing: Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: IconButton(
-                    icon: const Icon(Icons.logout),
-                    onPressed: _logout,
-                    tooltip: 'Logout',
+            child: Column(
+              children: [
+                // Top Brand Logo
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.15),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.eco, color: Colors.white, size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      const Text(
+                        'Sedekah Jelantah',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
+
+                // Navigation Items
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Column(
+                      children: [
+                        _NavItem(
+                          icon: Icons.inbox_rounded,
+                          label: 'Donasi Masuk',
+                          isSelected: _selectedIndex == 0,
+                          onTap: () => setState(() => _selectedIndex = 0),
+                        ),
+                        const SizedBox(height: 8),
+                        _NavItem(
+                          icon: Icons.location_on_rounded,
+                          label: 'Kelola Lokasi TPS',
+                          isSelected: _selectedIndex == 1,
+                          onTap: () => setState(() => _selectedIndex = 1),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                // User Profile & Logout Box at Bottom
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+                    ),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 18,
+                          backgroundColor: Color(0xFF7BD8B1),
+                          child: Icon(Icons.person, color: Color(0xFF047857), size: 20),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Pengelola TPS',
+                                style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              Text(
+                                'OPERATOR',
+                                style: TextStyle(color: Colors.white60, fontSize: 10, letterSpacing: 0.8),
+                              ),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.logout, color: Colors.white70, size: 20),
+                          onPressed: _logout,
+                          tooltip: 'Keluar',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            destinations: const [
-              NavigationRailDestination(
-                icon: Icon(Icons.inbox),
-                label: Text('Donasi Masuk'),
-              ),
-              NavigationRailDestination(
-                icon: Icon(Icons.location_on),
-                label: Text('Kelola Lokasi'),
+          ),
+
+          // Main Section (Top Header + Dynamic Page Content)
+          Expanded(
+            child: Column(
+              children: [
+                // Top Header Bar
+                Container(
+                  height: 64,
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    border: Border(bottom: BorderSide(color: Color(0xFFE2E8F0))),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Breadcrumb
+                      Row(
+                        children: [
+                          const Text('Pengelola', style: TextStyle(color: Color(0xFF64748B), fontSize: 12, fontWeight: FontWeight.w600)),
+                          const SizedBox(width: 6),
+                          const Icon(Icons.chevron_right, size: 14, color: Color(0xFF64748B)),
+                          const SizedBox(width: 6),
+                          Text(
+                            _titles[_selectedIndex],
+                            style: const TextStyle(color: Color(0xFF0F172A), fontSize: 13, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+
+                      // System Online Status & Notification
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF047857).withValues(alpha: 0.08),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFF10B981),
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                const Text(
+                                  'Sistem Online',
+                                  style: TextStyle(
+                                    color: Color(0xFF047857),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Active Page Content
+                Expanded(
+                  child: _pages[_selectedIndex],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _NavItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _NavItem({
+    required this.icon,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: isSelected ? Colors.white.withValues(alpha: 0.15) : Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+            border: isSelected ? Border.all(color: Colors.white.withValues(alpha: 0.2)) : null,
+          ),
+          child: Row(
+            children: [
+              Icon(icon, color: isSelected ? Colors.white : Colors.white70, size: 20),
+              const SizedBox(width: 12),
+              Text(
+                label,
+                style: TextStyle(
+                  color: isSelected ? Colors.white : Colors.white70,
+                  fontSize: 14,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
               ),
             ],
           ),
-          const VerticalDivider(width: 1),
-          Expanded(child: _pages[_selectedIndex]),
-        ],
+        ),
       ),
     );
   }

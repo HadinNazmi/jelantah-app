@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={theme:{extend:{"colors":{"on-tertiary":"#ffffff","inverse-on-surface":"#eff1f3","primary":"#005d42","surface-container-low":"#f2f4f6","on-primary-fixed-variant":"#00513a","outline":"#6e7a73","surface-container":"#eceef0","surface":"#f7f9fb","surface-container-lowest":"#ffffff","on-error-container":"#93000a","tertiary-fixed-dim":"#ffb95f","surface-dim":"#d8dadc","on-primary":"#ffffff","error-container":"#ffdad6","secondary-fixed-dim":"#4edea3","on-error":"#ffffff","error":"#ba1a1a","on-primary-container":"#9ffdd3","surface-tint":"#006c4e","tertiary-container":"#945d00","on-tertiary-container":"#ffe6cc","outline-variant":"#bdc9c1","surface-container-highest":"#e0e3e5","secondary-fixed":"#6ffbbe","on-secondary-container":"#00714d","primary-fixed-dim":"#7bd8b1","primary-fixed":"#97f5cc","inverse-primary":"#7bd8b1","surface-bright":"#f7f9fb","on-tertiary-fixed-variant":"#653e00","inverse-surface":"#2d3133","tertiary-fixed":"#ffddb8","on-secondary-fixed-variant":"#005236","background":"#f7f9fb","on-tertiary-fixed":"#2a1700","on-background":"#191c1e","secondary":"#006c49","secondary-container":"#6cf8bb","on-secondary":"#ffffff","on-secondary-fixed":"#002113","on-primary-fixed":"#002115","surface-variant":"#e0e3e5","on-surface-variant":"#3e4943","tertiary":"#734700","primary-container":"#047857","surface-container-high":"#e6e8ea","on-surface":"#191c1e"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"card-padding":"20px","section-gap":"32px","gutter":"16px","container-margin":"24px","base":"8px"},"fontFamily":{"body-sm":["Inter"],"display-lg":["Inter"],"body-lg":["Inter"],"label-caps":["Inter"],"headline-lg-mobile":["Inter"],"headline-lg":["Inter"],"title-md":["Inter"],"mono-data":["Inter"]},"fontSize":{"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"display-lg":["48px",{"lineHeight":"1.1","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["12px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"700"}],"headline-lg-mobile":["24px",{"lineHeight":"1.2","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"1.2","letterSpacing":"-0.01em","fontWeight":"600"}],"title-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"mono-data":["14px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"500"}]}}}}</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"></head><body class="bg-surface font-body-lg text-on-surface"><aside class="fixed left-0 top-0 h-full w-[260px] bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30 shadow-sm"><div class="p-6 flex items-center gap-3 mb-4"><img alt="Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGxXoVz11J1KmSFVyFSRcFN8XCgrxm3ZQK--N9OA1YVVhL3UDTEbm7Ex6TH7JCmPBP5g6a4HUc1sBkzVoN1i14cD1zn-9As94WfHmQ4FeizkD7WcvBUyxoQr5GWx8GPbr-sAOJ8LctxdvC2TENcX_W4DKZ53_JIQ4soED3q0zYbjtVBhAU4YO3qXcQvkK0lvxOexqB72-YKeDBge4_GOMSPAoewAIgt1kv-8FVQ7pilc9VTA1OY1Q"><span class="font-headline-lg text-title-md text-primary tracking-tight">Sedekah Jelantah</span></div><nav class="flex-1 px-4 space-y-1" data-active-classes="bg-primary/10 text-primary font-bold"><a aria-current="page" class="flex items-center px-4 py-3 rounded-lg transition-all group bg-primary/10 text-primary font-bold" data-path="dashboard" href="#"><span class="material-symbols-outlined mr-3">dashboard</span><span class="text-body-sm">Dashboard</span></a><a class="flex items-center justify-between px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-all group" data-path="verifikasi-donasi" href="#"><div class="flex items-center"><span class="material-symbols-outlined mr-3">verified_user</span><span class="text-body-sm">Verifikasi Donasi</span></div><span class="bg-tertiary text-on-tertiary text-[10px] px-2 py-0.5 rounded-full">12</span></a></nav><div class="p-4 mx-4 mb-8 bg-surface-container-low rounded-xl flex items-center gap-3 border border-outline-variant/30"><img alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAkMVCzRd4etYKwR5czfGSpcHpBLuuV2CJkBSeBJWQRUtXj73FeTxxJ8e630uKO8MOrtD7WdlJUMl3Pcc0SMXx0JW5fG0pGwEEQK2XjRFYf27rLq8HtVr023dj19lt4b7MKhLDJ4C0Rv5DvMVZm4oQt_m3WiUQTcYvhzCvVg4-JesnQ0tXnTMCUEXii0f4WCUnHJ6IEZEhUQxvSi5d1tKs4GDG_TpoLP3yrd15DSnYE_IPh9bwENc"><div class="overflow-hidden"><p class="text-on-surface text-body-sm font-bold truncate">Ahmad Junaidi</p><p class="text-on-surface-variant/50 text-[11px] uppercase tracking-wider">Super Admin</p></div></div></aside><div class="pl-[260px]"><header class="fixed top-0 left-[260px] right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md z-40 px-8 flex items-center justify-between border-b border-outline-variant/30"><div class="flex flex-col"><div class="flex items-center gap-2 text-label-caps text-outline"><span class="hover:text-primary cursor-pointer">Admin</span><span class="material-symbols-outlined text-[12px]">chevron_right</span><span class="text-on-surface-variant">Dashboard Utama</span></div></div><div class="flex items-center gap-6"><div class="relative group"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary">search</span><input class="pl-10 pr-4 py-2 bg-surface-container rounded-full text-body-sm w-64 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Cari TPS..." type="text"></div><div class="flex items-center gap-4 border-l border-outline-variant/50 pl-6"><div class="relative"><span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span><span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex items-center gap-2 px-3 py-1 bg-secondary-container/30 rounded-full"><span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span><span class="text-[12px] font-bold text-on-secondary-container">Sistem Online</span></div></div></div></header><main class="pt-16 min-h-screen bg-[#F8FAFC]"><div class="flex flex-col w-full relative">
+<!-- Header Section -->
+<div class="mb-section-gap flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 md:px-12 py-8 bg-surface-container-lowest shadow-sm z-10 relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-12 left-12 w-48 h-48 bg-secondary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">scale</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1 tracking-tight">Donasi Masuk</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Periksa dan validasi kiriman minyak jelantah dari donatur untuk mengkonversi nilai donasi menjadi poin sedekah.</p>
+</div>
+</div>
+<button class="group flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface px-5 py-3 rounded-lg font-title-md text-body-sm transition-all shadow-sm shrink-0" onclick="refreshData(this)">
+<span class="material-symbols-outlined text-[20px] group-hover:rotate-180 transition-transform duration-500">refresh</span>
+      Segarkan Data
+    </button>
+</div>
+<!-- Content Section -->
+<div class="px-6 md:px-12 pb-24">
+<!-- Filters & Stats row -->
+<div class="flex flex-wrap items-center justify-between gap-6 mb-8">
+<div class="flex items-center gap-2 bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-2 bg-surface-container-lowest text-primary font-title-md text-body-sm rounded-md shadow-sm transition-colors">Semua (12)</button>
+<button class="px-4 py-2 text-on-surface-variant hover:text-on-surface font-title-md text-body-sm rounded-md transition-colors">Menunggu Verifikasi (8)</button>
+<button class="px-4 py-2 text-on-surface-variant hover:text-on-surface font-title-md text-body-sm rounded-md transition-colors">Selesai (4)</button>
+</div>
+<div class="flex items-center gap-4 text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error-container"></span> Prioritas Tinggi
+        </div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">sort</span> Urutkan: Terlama
+        </div>
+</div>
+</div>
+<!-- Grid of Donation Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-[16px] shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden group">
+<!-- Card Header -->
+<div class="px-card-padding py-4 bg-surface-container-low/50 flex justify-between items-center relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 w-1 bg-tertiary-fixed-dim"></div>
+<span class="font-mono-data text-mono-data text-on-surface-variant">#TRX-901</span>
+<span class="px-3 py-1 bg-tertiary-fixed-dim/20 text-tertiary font-title-md text-[12px] rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+              Menunggu Verifikasi
+            </span>
+</div>
+<!-- Content Body -->
+<div class="p-card-padding flex-1 flex flex-col gap-6">
+<!-- Donor Info -->
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A portrait of an Indonesian woman in her 30s, natural daylight, soft focus background, wearing a casual shirt, professional ecological web app avatar style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoCC6p7frDqqRWIwiIcfMGh1Iwy8V2eymfQXR5r1pz2q_eVaZyQwcIzHKp-Caf_yUGEKvSeCWU3yax86IWjrhpQ6hF-RghS5nkDkYXmOZLRNwbM8O14-TBvdp94Lg2exHOKRpsDthtuPLjij8yrzbue7TtBJlDCHQZEqcvqspXjEZyWsWm-xt9o1bwwmyciXd9pCmwkrEVKKzYGr_QTeJwxtAHfrhtpGGmrGTmzwgKi0jMCEVWVGc">
+<div>
+<p class="font-title-md text-body-lg text-on-surface leading-tight">Siti Aminah</p>
+<div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-body-sm text-[12px]">10 menit lalu</span>
+</div>
+</div>
+</div>
+<!-- Measurement Split -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface px-4 py-3 rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline mb-1 uppercase tracking-wider">Estimasi Donatur</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg-mobile text-on-surface">5.2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Liter</span>
+</div>
+</div>
+<div class="bg-primary/5 px-4 py-3 rounded-lg flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full -mr-8 -mt-8"></div>
+<span class="font-label-caps text-[10px] text-primary mb-1 uppercase tracking-wider">Hasil Verifikasi</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg-mobile text-primary/40">--</span>
+<span class="font-body-sm text-body-sm text-primary/40">Liter</span>
+</div>
+</div>
+</div>
+<!-- Media Preview (Scale Photo) -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-title-md text-[13px] text-on-surface">Bukti Penimbangan</span>
+<button class="text-primary hover:text-surface-tint font-title-md text-[12px] flex items-center gap-1 transition-colors" onclick="openModal()">
+                Lihat Detail <span class="material-symbols-outlined text-[14px]">open_in_full</span>
+</button>
+</div>
+<div class="relative w-full h-32 rounded-lg overflow-hidden cursor-pointer group/img" onclick="openModal()">
+<div class="bg-cover bg-center w-full h-full transition-transform duration-700 group-hover/img:scale-105" data-alt="Close up photo of a dirty yellow jerrycan of used cooking oil placed on a digital industrial weighing scale showing a reading of 5.2kg, taken with a smartphone camera, slightly grainy, realistic warehouse lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSvQCFU1ab6cqAZjVwgNQK885BY8PSbdYKkTHb5czNw2WHzLdMMe3Xdfer1EvQ093ImUFGPOiTmWlazPI70awBf3LDzcr67vkHtMAofDR808WhkD4RMxhZ66hTixRup6bK5d0npvXQsOC-e6b-JUMSYdzJwroC73gqrLEhPL9429GUHezaLt_wFWawbkPfeh5vL6fYz8_EGe_GMQFQ8WRo_tz6VHP5CycTuXgFJr04Za6GJyAwz4M')"></div>
+<div class="absolute inset-0 bg-inverse-surface/30 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-primary">zoom_in</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions Footer -->
+<div class="p-card-padding pt-0 flex flex-col gap-2 mt-auto">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-3 px-4 rounded-lg font-title-md text-body-sm shadow-sm transition-all flex justify-center items-center gap-2 relative overflow-hidden group/btn" onclick="openModal()">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+<span class="material-symbols-outlined text-[18px]">verified</span>
+            Verifikasi Penimbangan
+          </button>
+<button class="w-full bg-surface-container text-on-surface-variant/50 py-3 px-4 rounded-lg font-title-md text-body-sm transition-colors cursor-not-allowed flex justify-center items-center gap-2" disabled="">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+            Tandai Selesai &amp; Beri Poin
+          </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-[16px] shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+<div class="px-card-padding py-4 bg-surface-container-low/50 flex justify-between items-center relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 w-1 bg-tertiary-fixed-dim"></div>
+<span class="font-mono-data text-mono-data text-on-surface-variant">#TRX-900</span>
+<span class="px-3 py-1 bg-tertiary-fixed-dim/20 text-tertiary font-title-md text-[12px] rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+              Menunggu Verifikasi
+            </span>
+</div>
+<div class="p-card-padding flex-1 flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-md text-body-lg shadow-sm">BW</div>
+<div>
+<p class="font-title-md text-body-lg text-on-surface leading-tight">Budi Waseso</p>
+<div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-body-sm text-[12px]">45 menit lalu</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface px-4 py-3 rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline mb-1 uppercase tracking-wider">Estimasi Donatur</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg-mobile text-on-surface">12.0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Liter</span>
+</div>
+</div>
+<div class="bg-primary/5 px-4 py-3 rounded-lg flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full -mr-8 -mt-8"></div>
+<span class="font-label-caps text-[10px] text-primary mb-1 uppercase tracking-wider">Hasil Verifikasi</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg-mobile text-primary/40">--</span>
+<span class="font-body-sm text-body-sm text-primary/40">Liter</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-title-md text-[13px] text-on-surface">Bukti Penimbangan</span>
+<button class="text-primary hover:text-surface-tint font-title-md text-[12px] flex items-center gap-1 transition-colors">
+                Lihat Detail <span class="material-symbols-outlined text-[14px]">open_in_full</span>
+</button>
+</div>
+<div class="relative w-full h-32 rounded-lg overflow-hidden cursor-pointer group/img">
+<div class="bg-cover bg-center w-full h-full transition-transform duration-700 group-hover/img:scale-105" data-alt="Two large transparent plastic bottles filled with dark brown used cooking oil, sitting on an analogue weighing scale in a brightly lit kitchen. The scale needle points to roughly 12kg." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkgoRLPkH-0TIWtYU41ER9BAfSiuqvXZ27aEtHgswu5CROL7Y1jDootkISd-h6zkdA3qp-5tPc0RqZKgt_onhghNSQ1FAq18IPDdDKeg241v3-OrlwJuW44IO9EGjf6ArqLv1n8e61aC_f010Cvxa1mzEDNvZHPLtFG7IuAGAYr8986J5ZxQlU3cTjIhkPnJYpP9xuB8ZziJ8m9yEMme1e7LgkLcgRTSb9WS4osEOU7CF7dKmJO10')"></div>
+<div class="absolute inset-0 bg-inverse-surface/30 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-primary">zoom_in</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-card-padding pt-0 flex flex-col gap-2 mt-auto">
+<button class="w-full bg-primary hover:bg-surface-tint text-on-primary py-3 px-4 rounded-lg font-title-md text-body-sm shadow-sm transition-all flex justify-center items-center gap-2 group/btn relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+<span class="material-symbols-outlined text-[18px]">verified</span>
+            Verifikasi Penimbangan
+          </button>
+<button class="w-full bg-surface-container text-on-surface-variant/50 py-3 px-4 rounded-lg font-title-md text-body-sm transition-colors cursor-not-allowed flex justify-center items-center gap-2" disabled="">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+            Tandai Selesai &amp; Beri Poin
+          </button>
+</div>
+</div>
+<!-- Card 3 (Verified State Example) -->
+<div class="bg-surface-container-lowest rounded-[16px] shadow-sm flex flex-col overflow-hidden opacity-80">
+<div class="px-card-padding py-4 bg-surface-container-low/50 flex justify-between items-center relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 w-1 bg-secondary"></div>
+<span class="font-mono-data text-mono-data text-on-surface-variant">#TRX-898</span>
+<span class="px-3 py-1 bg-secondary/10 text-secondary font-title-md text-[12px] rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+              Terverifikasi
+            </span>
+</div>
+<div class="p-card-padding flex-1 flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A portrait of an Indonesian man wearing a casual polo shirt, soft lighting, outdoor background, professional ecological web app avatar style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjjNSGpoZAl0QEPSUlJwZDU-dLm9Q16RqrQ1daiQOkXTmgT3ZRhenQUqUrSgR74WwFe9BZnC3hxGS3bba02P1TTBcHSKpnSUfXkjnso6I_8xTM5rmRWrqH1eXH6JXGog1JihED4bN5cyfUWbCd1ek9W8KOmCq45Sxq1k6S7yKuQ_mlORaacGUPcCmf2W_a2tKDs9k051KucrLge_xABuRQqHWPyjOpmVnhMNTCu8iAjD8O0Fv5It4">
+<div>
+<p class="font-title-md text-body-lg text-on-surface leading-tight">Rudi Hermawan</p>
+<div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-body-sm text-[12px]">2 jam lalu</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface px-4 py-3 rounded-lg flex flex-col">
+<span class="font-label-caps text-[10px] text-outline mb-1 uppercase tracking-wider">Estimasi</span>
+<div class="flex items-baseline gap-1 text-on-surface-variant">
+<span class="font-headline-lg text-headline-lg-mobile line-through opacity-70">3.0</span>
+<span class="font-body-sm text-body-sm">Liter</span>
+</div>
+</div>
+<div class="bg-secondary/10 px-4 py-3 rounded-lg flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-secondary/20 rounded-full -mr-8 -mt-8"></div>
+<span class="font-label-caps text-[10px] text-secondary mb-1 uppercase tracking-wider">Terverifikasi</span>
+<div class="flex items-baseline gap-1 text-secondary">
+<span class="font-headline-lg text-headline-lg-mobile">2.8</span>
+<span class="font-body-sm text-body-sm">Liter</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-title-md text-[13px] text-on-surface">Bukti Penimbangan</span>
+<span class="text-on-surface-variant font-title-md text-[12px] flex items-center gap-1">
+                Telah diulas
+              </span>
+</div>
+<div class="relative w-full h-16 rounded-lg overflow-hidden grayscale opacity-70">
+<div class="bg-cover bg-center w-full h-full" data-alt="Small plastic bottle of used cooking oil on a small kitchen scale showing 2.8kg." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC82MEexTmAwKFafyOpWoDxvOEVvHAh74-wKLWvZZA7cuAnC9RjbgXogDGZWw5l9K7suf9xXq5EHKjzhFsPSRhe3e_ifnf9MXY-5Aq3P37mcyd2gSVofwTIlC0r5UeAcCdKLU3HkAUL71Zr23GaMrthFfLTk13zDShH5mibd2S7DRAMzZC_szSX6_mCYyyG2jAyB_LpSmOEmybkUGuvdwg007hCuS6dOmBSXePaFKlPyJTj6HZRzq4')"></div>
+</div>
+</div>
+</div>
+<div class="p-card-padding pt-0 flex flex-col gap-2 mt-auto">
+<button class="w-full bg-tertiary-container hover:bg-tertiary text-on-tertiary-container py-3 px-4 rounded-lg font-title-md text-body-sm shadow-sm transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">redeem</span>
+            Tandai Selesai &amp; Beri Poin
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Overlay (Hidden by default, shown for demonstration via JS) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 pointer-events-none transition-opacity duration-300" id="verificationModal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm" onclick="closeModal()"></div>
+<!-- Modal Content -->
+<div class="bg-surface-container-lowest w-full max-w-4xl rounded-[24px] shadow-2xl relative z-10 flex flex-col overflow-hidden transform scale-95 transition-transform duration-300" id="modalDialog">
+<!-- Modal Header -->
+<div class="px-6 py-5 border-b border-surface-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-title-md text-on-surface">Verifikasi Berat Minyak</h2>
+<p class="font-body-sm text-[13px] text-on-surface-variant">TRX-901 • Siti Aminah</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body (Split Layout) -->
+<div class="flex flex-col md:flex-row h-[60vh] min-h-[400px]">
+<!-- Left Pane: Image Viewer -->
+<div class="w-full md:w-1/2 bg-inverse-surface relative group overflow-hidden">
+<div class="bg-cover bg-center w-full h-full" data-alt="High resolution close up photo of a dirty yellow jerrycan of used cooking oil placed on a digital industrial weighing scale showing a reading of 5.2kg, clearly legible numbers on the digital display, realistic warehouse lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDK7BhsoJ4kQv1_4aThyofdE6ucr_kuMN8tFEQiEXvG73o6pkheUnhhQ93b5O72JEmlHWsc42AklQGQyONDex-rRf3HKDTeQRggXVMWw4IcDWTXphMKzlINLe2X6DHe2a1GS7kzXf930MwkGuF1oOECjd5fu-_tOChDLiMURUE0IU2p_OrJhccEhKV7N-DYJNVdVaeawppDcTq3ypD-JzaZ0-wc_rn6nKn4nsS7VDFiX2NoWWv3j5I')"></div>
+<!-- Image Controls Overlay -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-inverse-surface/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-4 border border-outline-variant/20 shadow-lg">
+<button class="text-on-error hover:text-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">zoom_out</span></button>
+<span class="text-on-error font-mono-data text-[12px]">100%</span>
+<button class="text-on-error hover:text-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">zoom_in</span></button>
+<div class="w-px h-4 bg-outline-variant/40"></div>
+<button class="text-on-error hover:text-primary-fixed transition-colors"><span class="material-symbols-outlined text-[20px]">rotate_right</span></button>
+</div>
+</div>
+<!-- Right Pane: Input Form -->
+<div class="w-full md:w-1/2 bg-surface-container-lowest p-8 flex flex-col">
+<div class="bg-surface px-4 py-3 rounded-xl mb-8 flex justify-between items-center border border-outline-variant/30">
+<span class="font-body-lg text-body-sm text-on-surface-variant">Estimasi Donatur:</span>
+<span class="font-title-md text-title-md text-on-surface">5.2 Liter</span>
+</div>
+<div class="mb-auto">
+<label class="block font-title-md text-body-sm text-on-surface mb-2">Volume Terverifikasi (Liter)</label>
+<div class="relative group">
+<input class="w-full bg-surface-container border border-outline-variant/50 rounded-xl px-4 py-4 font-headline-lg text-title-md text-on-surface focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all" placeholder="Masukkan volume akhir..." step="0.1" type="number" value="5.2">
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+<span class="font-title-md text-on-surface-variant">L</span>
+</div>
+</div>
+<div class="mt-6 p-4 bg-secondary-container/20 border border-secondary/20 rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<h4 class="font-title-md text-[13px] text-on-secondary-container mb-1">Perhitungan Poin Sedekah</h4>
+<p class="font-body-sm text-[12px] text-on-secondary-container/80 leading-relaxed">Nilai konversi saat ini adalah <strong class="font-bold">100 Poin / Liter</strong>. Donatur akan menerima estimasi <strong>520 Poin</strong> setelah verifikasi ini disimpan.</p>
+</div>
+</div>
+</div>
+<!-- Modal Action Footer -->
+<div class="flex items-center gap-3 pt-6 mt-8 border-t border-surface-variant">
+<button class="flex-1 px-6 py-3 bg-surface-container hover:bg-surface-container-high text-on-surface-variant rounded-xl font-title-md text-body-sm transition-colors" onclick="closeModal()">Batal</button>
+<button class="flex-[2] px-6 py-3 bg-primary hover:bg-surface-tint text-on-primary rounded-xl font-title-md text-body-sm transition-all shadow-sm shadow-primary/20 flex items-center justify-center gap-2" onclick="saveVerification()">
+<span class="material-symbols-outlined text-[18px]">save</span>
+              Simpan Verifikasi
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function openModal() {
+    const modal = document.getElementById('verificationModal');
+    const dialog = document.getElementById('modalDialog');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    dialog.classList.remove('scale-95');
+    dialog.classList.add('scale-100');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('verificationModal');
+    const dialog = document.getElementById('modalDialog');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    dialog.classList.remove('scale-100');
+    dialog.classList.add('scale-95');
+  }
+
+  function saveVerification() {
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Menyimpan...';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+      closeModal();
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      // In a real app, you would update the UI state of the card here
+    }, 800);
+  }
+
+  function refreshData(btn) {
+    const icon = btn.querySelector('span');
+    icon.classList.add('animate-spin');
+    setTimeout(() => {
+      icon.classList.remove('animate-spin');
+    }, 1000);
+  }
+</script></main></div>
+
+</body></html>

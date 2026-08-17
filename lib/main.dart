@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jelantah_app/core/theme/app_theme.dart';
 import 'package:jelantah_app/admin/auth/login_page.dart';
-import 'package:jelantah_app/donatur/auth/login_page.dart';
 
 void main() {
   runApp(const JelantahApp());
