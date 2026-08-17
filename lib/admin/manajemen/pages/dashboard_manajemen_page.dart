@@ -43,12 +43,25 @@ class _DashboardManajemenPageState extends State<DashboardManajemenPage> {
       backgroundColor: const Color(0xFFF8FAFC),
       body: Row(
         children: [
-          // Sidebar Navigation (Clean White Surface)
+          // Sidebar Navigation (Dark Emerald Gradient)
           Container(
             width: 260,
             decoration: const BoxDecoration(
-              color: Colors.white,
-              border: Border(right: BorderSide(color: Color(0xFFE2E8F0))),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF064E3B),
+                  Color(0xFF047857),
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 16,
+                  offset: Offset(4, 0),
+                ),
+              ],
             ),
             child: Column(
               children: [
@@ -60,16 +73,16 @@ class _DashboardManajemenPageState extends State<DashboardManajemenPage> {
                       Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF047857).withValues(alpha: 0.1),
+                          color: Colors.white.withValues(alpha: 0.15),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.eco_rounded, color: Color(0xFF047857), size: 24),
+                        child: const Icon(Icons.eco_rounded, color: Colors.white, size: 24),
                       ),
                       const SizedBox(width: 12),
                       const Text(
                         'Si Jelantah CSR',
                         style: TextStyle(
-                          color: Color(0xFF0F172A),
+                          color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           letterSpacing: -0.5,
@@ -116,16 +129,16 @@ class _DashboardManajemenPageState extends State<DashboardManajemenPage> {
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF1F5F9),
+                      color: Colors.black.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFFE2E8F0)),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
                     ),
                     child: Row(
                       children: [
                         const CircleAvatar(
                           radius: 18,
-                          backgroundColor: Color(0xFF047857),
-                          child: Icon(Icons.person, color: Colors.white, size: 20),
+                          backgroundColor: Color(0xFF7BD8B1),
+                          child: Icon(Icons.person, color: Color(0xFF047857), size: 20),
                         ),
                         const SizedBox(width: 10),
                         Expanded(
@@ -134,18 +147,18 @@ class _DashboardManajemenPageState extends State<DashboardManajemenPage> {
                             children: const [
                               Text(
                                 'CSR Manager',
-                                style: TextStyle(color: Color(0xFF0F172A), fontSize: 13, fontWeight: FontWeight.bold),
+                                style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
                                 'MANAGEMENT',
-                                style: TextStyle(color: Color(0xFF64748B), fontSize: 10, letterSpacing: 0.8),
+                                style: TextStyle(color: Colors.white60, fontSize: 10, letterSpacing: 0.8),
                               ),
                             ],
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.logout, color: Color(0xFFEF4444), size: 20),
+                          icon: const Icon(Icons.logout, color: Colors.white70, size: 20),
                           onPressed: _logout,
                           tooltip: 'Keluar',
                         ),
@@ -259,20 +272,20 @@ class _ManagementNavItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF047857).withValues(alpha: 0.1) : Colors.transparent,
+            color: isSelected ? Colors.white.withValues(alpha: 0.15) : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
-            border: isSelected ? Border.all(color: const Color(0xFF047857).withValues(alpha: 0.2)) : null,
+            border: isSelected ? Border.all(color: Colors.white.withValues(alpha: 0.2)) : null,
           ),
           child: Row(
             children: [
-              Icon(icon, color: isSelected ? const Color(0xFF047857) : const Color(0xFF64748B), size: 20),
+              Icon(icon, color: isSelected ? Colors.white : Colors.white70, size: 20),
               const SizedBox(width: 12),
               Text(
                 label,
                 style: TextStyle(
-                  color: isSelected ? const Color(0xFF047857) : const Color(0xFF64748B),
+                  color: isSelected ? Colors.white : Colors.white70,
                   fontSize: 14,
-                  fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
             ],

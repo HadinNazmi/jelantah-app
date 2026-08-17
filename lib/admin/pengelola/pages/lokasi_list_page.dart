@@ -177,9 +177,9 @@ class _LokasiListPageState extends State<LokasiListPage> {
                                 ],
                               ),
                               onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (_) => LokasiKelolaPage(lokasi: lokasi)),
+                                await showDialog(
+                                  context: context,
+                                  builder: (_) => LokasiKelolaPage(lokasi: lokasi),
                                 );
                                 _loadData();
                               },

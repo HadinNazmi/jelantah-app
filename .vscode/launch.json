@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "1. Web Admin (Chrome)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "chrome"
+    },
+    {
+      "name": "2. Mobile HP (Samsung)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "RR8X800R66F"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Run Mobile (HP) + Web (Chrome) [F5]",
+      "configurations": [
+        "1. Web Admin (Chrome)",
+        "2. Mobile HP (Samsung)"
+      ],
+      "stopAll": true
+    }
+  ]
+}

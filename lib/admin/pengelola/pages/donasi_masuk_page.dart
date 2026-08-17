@@ -134,6 +134,41 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
     }
   }
 
+  void _tampilkanGambar(String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(24),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            InteractiveViewer(
+              minScale: 0.5,
+              maxScale: 4.0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 16,
+              right: 16,
+              child: IconButton(
+                icon: const Icon(Icons.close, color: Colors.white, size: 32),
+                onPressed: () => Navigator.pop(context),
+                style: IconButton.styleFrom(backgroundColor: Colors.black45),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -314,18 +349,22 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
                                         children: [
                                           const Text('FOTO BUKTI TIMBANGAN', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B))),
                                           const SizedBox(height: 6),
-                                          ClipRRect(
+                                          InkWell(
+                                            onTap: () => _tampilkanGambar(ApiClient.imageUrl(donasi.fotoBukti)),
                                             borderRadius: BorderRadius.circular(12),
-                                            child: Image.network(
-                                              ApiClient.imageUrl(donasi.fotoBukti),
-                                              width: double.infinity,
-                                              height: 160,
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (_, __, ___) => Container(
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(12),
+                                              child: Image.network(
+                                                ApiClient.imageUrl(donasi.fotoBukti),
                                                 width: double.infinity,
                                                 height: 160,
-                                                color: const Color(0xFFF1F5F9),
-                                                child: const Icon(Icons.broken_image, size: 40, color: Color(0xFF94A3B8)),
+                                                fit: BoxFit.cover,
+                                                errorBuilder: (_, __, ___) => Container(
+                                                  width: double.infinity,
+                                                  height: 160,
+                                                  color: const Color(0xFFF1F5F9),
+                                                  child: const Icon(Icons.broken_image, size: 40, color: Color(0xFF94A3B8)),
+                                                ),
                                               ),
                                             ),
                                           ),
