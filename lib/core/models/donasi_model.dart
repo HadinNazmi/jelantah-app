@@ -11,6 +11,7 @@ class DonasiModel {
   final String? verifiedAt;
   final LokasiModel? lokasi;
   final String? verifikatorNama;
+  final String? donaturNama;
 
   DonasiModel({
     required this.id,
@@ -23,6 +24,7 @@ class DonasiModel {
     this.verifiedAt,
     this.lokasi,
     this.verifikatorNama,
+    this.donaturNama,
   });
 
   factory DonasiModel.fromJson(Map<String, dynamic> json) {
@@ -39,6 +41,7 @@ class DonasiModel {
       verifiedAt: json['verified_at'],
       lokasi: json['lokasi'] != null ? LokasiModel.fromJson(json['lokasi']) : null,
       verifikatorNama: json['verifikator'] != null ? json['verifikator']['name'] : null,
+      donaturNama: json['user'] != null ? json['user']['name'] : null,
     );
   }
 }

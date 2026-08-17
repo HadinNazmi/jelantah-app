@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jelantah_app/core/api/api_client.dart';
 import 'package:jelantah_app/core/models/donasi_model.dart';
 import 'package:jelantah_app/core/services/auth_service.dart';
+import 'package:jelantah_app/admin/pengelola/pages/donasi_detail_pengelola_page.dart';
 
 class DonasiMasukPage extends StatefulWidget {
   const DonasiMasukPage({super.key});
@@ -15,6 +16,28 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
   List<DonasiModel> _donasiList = [];
   bool _isLoading = true;
   String? _token;
+  String _filter = 'semua';
+
+  List<DonasiModel> get _filteredDonasiList {
+    final now = DateTime.now();
+    return _donasiList.where((donasi) {
+      if (_filter == 'semua') return true;
+      try {
+        final date = DateTime.parse(donasi.createdAt);
+        if (_filter == 'hari_ini') {
+          return date.year == now.year && date.month == now.month && date.day == now.day;
+        } else if (_filter == 'minggu_ini') {
+          final difference = now.difference(date).inDays;
+          return difference <= 7;
+        } else if (_filter == 'bulan_ini') {
+          return date.year == now.year && date.month == now.month;
+        }
+      } catch (e) {
+        return true;
+      }
+      return true;
+    }).toList();
+  }
 
   @override
   void initState() {
@@ -171,6 +194,7 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
 
   @override
   Widget build(BuildContext context) {
+    final filteredList = _filteredDonasiList;
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       body: SingleChildScrollView(
@@ -207,10 +231,40 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
                     ],
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.refresh_rounded, color: Color(0xFF64748B)),
-                  onPressed: _loadData,
-                  tooltip: 'Refresh Data',
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: const Color(0xFFE2E8F0)),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: _filter,
+                          items: const [
+                            DropdownMenuItem(value: 'semua', child: Text('Semua Waktu')),
+                            DropdownMenuItem(value: 'hari_ini', child: Text('Hari Ini')),
+                            DropdownMenuItem(value: 'minggu_ini', child: Text('7 Hari Terakhir')),
+                            DropdownMenuItem(value: 'bulan_ini', child: Text('Bulan Ini')),
+                          ],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => _filter = value);
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    IconButton(
+                      icon: const Icon(Icons.refresh_rounded, color: Color(0xFF64748B)),
+                      onPressed: _loadData,
+                      tooltip: 'Refresh Data',
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -222,7 +276,7 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
                     padding: EdgeInsets.all(64),
                     child: Center(child: CircularProgressIndicator()),
                   )
-                : _donasiList.isEmpty
+                : filteredList.isEmpty
                     ? Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(48),
@@ -245,168 +299,83 @@ class _DonasiMasukPageState extends State<DonasiMasukPage> {
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: _donasiList.length,
+                        itemCount: filteredList.length,
                         itemBuilder: (context, index) {
-                          final donasi = _donasiList[index];
+                          final donasi = filteredList[index];
                           final color = _statusColor(donasi.status);
 
-                          return Container(
-                            margin: const EdgeInsets.only(bottom: 20),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: const Color(0xFFE2E8F0)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.03),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
+                          return Card(
+                            margin: const EdgeInsets.only(bottom: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              side: const BorderSide(color: Color(0xFFE2E8F0)),
                             ),
-                            padding: const EdgeInsets.all(24),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Top Header Row
-                                Row(
+                            elevation: 0,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(16),
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => DonasiDetailPengelolaPage(donasi: donasi),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Donasi #${donasi.id}',
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF0F172A),
-                                          ),
-                                        ),
-                                        const SizedBox(width: 12),
-                                        Text(
-                                          donasi.createdAt,
-                                          style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                                      decoration: BoxDecoration(
-                                        color: color.withValues(alpha: 0.12),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Text(
-                                        donasi.status.toUpperCase(),
-                                        style: TextStyle(
-                                          color: color,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 0.5,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 16),
-                                const Divider(color: Color(0xFFF1F5F9)),
-                                const SizedBox(height: 16),
-
-                                // Data Comparison Row & Image Preview
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Info Columns
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          const Text('INPUT DONATUR', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B))),
-                                          const SizedBox(height: 4),
-                                          Text(
-                                            '${donasi.jumlahInput} Liter',
-                                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
-                                          ),
-                                          const SizedBox(height: 16),
-                                          const Text('HASIL VERIFIKASI', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B))),
-                                          const SizedBox(height: 4),
-                                          Text(
-                                            donasi.jumlahTerverifikasi != null ? '${donasi.jumlahTerverifikasi} Liter' : 'Belum Diverifikasi',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: donasi.jumlahTerverifikasi != null ? const Color(0xFF047857) : const Color(0xFF94A3B8),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-
-                                    // Foto Bukti Preview
-                                    SizedBox(
-                                      width: 280,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          const Text('FOTO BUKTI TIMBANGAN', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B))),
-                                          const SizedBox(height: 6),
-                                          InkWell(
-                                            onTap: () => _tampilkanGambar(ApiClient.imageUrl(donasi.fotoBukti)),
-                                            borderRadius: BorderRadius.circular(12),
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(12),
-                                              child: Image.network(
-                                                ApiClient.imageUrl(donasi.fotoBukti),
-                                                width: double.infinity,
-                                                height: 160,
-                                                fit: BoxFit.cover,
-                                                errorBuilder: (_, __, ___) => Container(
-                                                  width: double.infinity,
-                                                  height: 160,
-                                                  color: const Color(0xFFF1F5F9),
-                                                  child: const Icon(Icons.broken_image, size: 40, color: Color(0xFF94A3B8)),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'Donasi #${donasi.id}',
+                                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Container(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                decoration: BoxDecoration(
+                                                  color: color.withValues(alpha: 0.12),
+                                                  borderRadius: BorderRadius.circular(8),
+                                                ),
+                                                child: Text(
+                                                  donasi.status.toUpperCase(),
+                                                  style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold),
                                                 ),
                                               ),
-                                            ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Text(
+                                            'Donatur: ${donasi.donaturNama ?? '-'}  •  TPS: ${donasi.lokasi?.nama ?? '-'}',
+                                            style: const TextStyle(color: Color(0xFF334155), fontSize: 13, fontWeight: FontWeight.w500),
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            '${donasi.jumlahInput} Liter  •  ${donasi.createdAt}',
+                                            style: const TextStyle(color: Color(0xFF64748B), fontSize: 13),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-
-                                // Bottom Action Buttons
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
                                     if (donasi.status == 'pending')
-                                      ElevatedButton.icon(
+                                      ElevatedButton(
                                         onPressed: () => _verifikasi(donasi),
-                                        icon: const Icon(Icons.fact_check_rounded, size: 18),
-                                        label: const Text('Verifikasi Penimbangan'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color(0xFF0284C7),
-                                          foregroundColor: Colors.white,
-                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                        ),
+                                        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF0284C7), foregroundColor: Colors.white),
+                                        child: const Text('Verifikasi'),
                                       ),
-                                    if (donasi.status == 'verifikasi') ...[
-                                      ElevatedButton.icon(
+                                    if (donasi.status == 'verifikasi')
+                                      ElevatedButton(
                                         onPressed: () => _selesaikan(donasi),
-                                        icon: const Icon(Icons.check_circle_rounded, size: 18),
-                                        label: const Text('Tandai Selesai & Beri Poin'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color(0xFF10B981),
-                                          foregroundColor: Colors.white,
-                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                                        ),
+                                        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF10B981), foregroundColor: Colors.white),
+                                        child: const Text('Selesai'),
                                       ),
-                                    ],
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
                           );
                         },
