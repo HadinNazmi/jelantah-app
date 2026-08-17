@@ -3,6 +3,7 @@ import 'package:jelantah_app/core/api/auth_api.dart';
 import 'package:jelantah_app/core/services/auth_service.dart';
 import 'package:jelantah_app/core/theme/app_theme.dart';
 import 'package:jelantah_app/donatur/auth/register_page.dart';
+import 'package:jelantah_app/donatur/auth/forgot_password_page.dart';
 import 'package:jelantah_app/donatur/pages/main_navigation.dart';
 
 class LoginPage extends StatefulWidget {
@@ -135,7 +136,26 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const ForgotPasswordPage()),
+                      );
+                    },
+                    child: const Text(
+                      'Lupa Password?',
+                      style: TextStyle(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
 
                 if (_errorMessage != null)
                   Padding(

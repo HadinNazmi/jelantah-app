@@ -3,6 +3,7 @@ import 'package:jelantah_app/core/api/auth_api.dart';
 import 'package:jelantah_app/core/services/auth_service.dart';
 import 'package:jelantah_app/admin/pengelola/pages/dashboard_pengelola_page.dart';
 import 'package:jelantah_app/admin/manajemen/pages/dashboard_manajemen_page.dart';
+import 'package:jelantah_app/admin/auth/forgot_password_page.dart';
 
 class AdminLoginPage extends StatefulWidget {
   const AdminLoginPage({super.key});
@@ -291,7 +292,12 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                                       ],
                                     ),
                                     TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (_) => const AdminForgotPasswordPage()),
+                                        );
+                                      },
                                       style: TextButton.styleFrom(
                                         padding: EdgeInsets.zero,
                                         minimumSize: Size.zero,

@@ -7,6 +7,7 @@ import 'package:jelantah_app/core/services/auth_service.dart';
 import 'package:jelantah_app/core/theme/app_theme.dart';
 import 'package:jelantah_app/donatur/auth/login_page.dart';
 import 'package:jelantah_app/donatur/pages/edit_profil_page.dart';
+import 'package:jelantah_app/donatur/pages/ganti_password_page.dart';
 
 class ProfilPage extends StatefulWidget {
   const ProfilPage({super.key});
@@ -353,6 +354,35 @@ class _ProfilPageState extends State<ProfilPage> {
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Ganti Password Card
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            side: const BorderSide(color: AppColors.border),
+                          ),
+                          elevation: 1,
+                          child: ListTile(
+                            leading: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFF1F5F9),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(Icons.lock_reset, color: AppColors.textPrimary),
+                            ),
+                            title: const Text('Ganti Password', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
+                            subtitle: const Text('Ubah kata sandi akun Anda', style: TextStyle(fontSize: 12)),
+                            trailing: const Icon(Icons.chevron_right),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => const GantiPasswordPage()),
+                              );
+                            },
                           ),
                         ),
                         const SizedBox(height: 24),
