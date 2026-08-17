@@ -7,6 +7,7 @@ class LokasiModel {
   final String? jamTutup;
   final String? hariOperasional;
   final String? pengelolaNama;
+  final bool statusAktif;
 
   LokasiModel({
     required this.id,
@@ -17,6 +18,7 @@ class LokasiModel {
     this.jamTutup,
     this.hariOperasional,
     this.pengelolaNama,
+    this.statusAktif = true,
   });
 
   factory LokasiModel.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ class LokasiModel {
       jamTutup: json['jam_tutup'],
       hariOperasional: json['hari_operasional'],
       pengelolaNama: json['pengelola'] != null ? json['pengelola']['name'] : null,
+      statusAktif: json['status_aktif'] == 1 || json['status_aktif'] == true,
     );
   }
 }

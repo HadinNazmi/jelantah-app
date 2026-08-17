@@ -21,10 +21,7 @@ class ApiClient {
     return http.post(url, headers: headers, body: jsonEncode(body));
   }
 
-  static Future<http.Response> get(
-    String endpoint, {
-    String? token,
-  }) async {
+  static Future<http.Response> get(String endpoint, {String? token}) async {
     final url = Uri.parse('$baseUrl/$endpoint');
 
     final headers = {
@@ -52,7 +49,7 @@ class ApiClient {
   }
 
   static String imageUrl(String path) {
-  final base = baseUrl.replaceAll('/api', '');
-  return '$base/storage/$path';
-}
+    final base = baseUrl.replaceAll('/api', '');
+    return '$base/foto/$path';
+  }
 }
